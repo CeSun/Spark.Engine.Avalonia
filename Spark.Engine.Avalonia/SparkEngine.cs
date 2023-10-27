@@ -4,6 +4,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.OpenGL;
 using Avalonia.OpenGL.Controls;
+using Avalonia.Rendering;
 using Silk.NET.OpenGLES;
 using Spark.Engine.Platform;
 using System.Diagnostics;
@@ -16,7 +17,7 @@ namespace Spark.Engine.Avalonia
         High,
         Low 
     }
-    public class SparkEngine : OpenGlControlBase
+    public class SparkEngine : OpenGlControlBase, ICustomHitTest
     {
         public static readonly StyledProperty<RenderQuality> RenderQualityProperty =
         AvaloniaProperty.Register<SparkEngine, RenderQuality>(nameof(RenderQuality), defaultValue: RenderQuality.Low);
@@ -37,10 +38,9 @@ namespace Spark.Engine.Avalonia
 
         public SparkEngine()
         {
-            KeyUp += (s, e) =>
-            {
+            Focusable = true;
 
-            };
+            
         }
         protected override void OnSizeChanged(SizeChangedEventArgs e)
         {
@@ -99,6 +99,11 @@ namespace Spark.Engine.Avalonia
             if (Engine == null)
                 return;
             Engine.Stop();
+        }
+
+        public bool HitTest(global::Avalonia.Point point)
+        {
+            return true;
         }
     }
 }

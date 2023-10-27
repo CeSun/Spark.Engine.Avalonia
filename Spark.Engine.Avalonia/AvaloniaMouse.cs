@@ -26,7 +26,6 @@ namespace Spark.Engine.Avalonia
 
             this.control.PointerPressed += (s, e) =>
             {
-                
                 var p = e.GetCurrentPoint(s as Control);
                 MouseButton mouseButton = MouseButton.Unknown;
                 if (p.Properties.IsLeftButtonPressed)
