@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.OpenGL;
 using Avalonia.OpenGL.Controls;
@@ -20,7 +21,7 @@ namespace Spark.Engine.Avalonia
         public static readonly StyledProperty<RenderQuality> RenderQualityProperty =
         AvaloniaProperty.Register<SparkEngine, RenderQuality>(nameof(RenderQuality), defaultValue: RenderQuality.Low);
 
-
+        
 
         public event Action<Level>? BeginPlay;
         public event Action<Level>? EndPlay;
@@ -36,8 +37,11 @@ namespace Spark.Engine.Avalonia
 
         public SparkEngine()
         {
+            KeyUp += (s, e) =>
+            {
+
+            };
         }
-        
         protected override void OnSizeChanged(SizeChangedEventArgs e)
         {
             base.OnSizeChanged(e);
@@ -62,7 +66,7 @@ namespace Spark.Engine.Avalonia
                 {
                     { "OpenGL", GL.GetApi(gl.GetProcAddress) },
                     { "WindowSize", new System.Drawing.Point((int)(Bounds.Width * VisualRoot.RenderScaling), (int)(Bounds.Height * VisualRoot.RenderScaling)) },
-                    { "InputContext",null},
+                    { "InputContext", new AvaloniaInput(this)},
                     { "FileSystem", FileSystem.Instance},
                     { "View", null },
                     { "IsMobile", RenderQuality == RenderQuality.Low },
@@ -72,6 +76,9 @@ namespace Spark.Engine.Avalonia
                 Engine.OnEndPlay = EndPlay;
                 stopwatch.Start();
                 Engine.Start();
+
+               
+
             }
             else
             {

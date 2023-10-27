@@ -1,4 +1,5 @@
 ﻿using SharpGLTF.Schema2;
+using Silk.NET.Input;
 using Spark.Engine;
 using Spark.Engine.Actors;
 using Spark.Engine.Assets;
@@ -35,6 +36,14 @@ namespace SparkDemo
             Camera.RelativeRotation = Quaternion.CreateFromYawPitchRoll(0, -30F.DegreeToRadians(), 0);
         }
 
+        protected override void OnUpdate(double DeltaTime)
+        {
+            base.OnUpdate(DeltaTime);
 
+            if (CurrentWorld.Engine.MainKeyBoard.IsKeyPressed(Key.W))
+            {
+                Console.WriteLine("W 按下了！");
+            }
+        }
     }
 }
