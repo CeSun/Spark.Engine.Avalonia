@@ -21,4 +21,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Content\*\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

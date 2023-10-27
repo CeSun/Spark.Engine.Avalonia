@@ -1,10 +1,12 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.OpenGL;
 using Avalonia.OpenGL.Controls;
 using Silk.NET.OpenGLES;
 using Spark.Engine.Platform;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Spark.Engine.Avalonia
 {
@@ -15,10 +17,20 @@ namespace Spark.Engine.Avalonia
     }
     public class SparkEngine : OpenGlControlBase
     {
+        public static readonly StyledProperty<RenderQuality> RenderQualityProperty =
+        AvaloniaProperty.Register<SparkEngine, RenderQuality>(nameof(RenderQuality), defaultValue: RenderQuality.Low);
+
+
+
+        public event Action<Level>? BeginPlay;
+        public event Action<Level>? EndPlay;
+        public RenderQuality RenderQuality 
+        { 
+            get => GetValue(RenderQualityProperty); 
+            set => SetValue(RenderQualityProperty, value); 
+        }
 
         private Stopwatch stopwatch = new Stopwatch();
-
-        public RenderQuality RenderQuality { get; set; } = RenderQuality.Low;
 
         Engine? Engine;
 
@@ -40,10 +52,11 @@ namespace Spark.Engine.Avalonia
 
         protected override void OnOpenGlRender(GlInterface gl, int fb)
         {
+            var api = GL.GetApi(gl.GetProcAddress);
+            var fbo = api.GetInteger(GLEnum.FramebufferBinding);
+
             if (Engine == null)
             {
-                var api = GL.GetApi(gl.GetProcAddress);
-                var fbo = api.GetInteger(GLEnum.FramebufferBinding);
                 Engine = new Engine();
                 Engine.InitEngine(new string[] { }, new Dictionary<string, object>
                 {
@@ -55,6 +68,8 @@ namespace Spark.Engine.Avalonia
                     { "IsMobile", RenderQuality == RenderQuality.Low },
                     { "DefaultFBOID", fbo }
                 });
+                Engine.OnBeginPlay = BeginPlay;
+                Engine.OnEndPlay = EndPlay;
                 stopwatch.Start();
                 Engine.Start();
             }
@@ -65,6 +80,8 @@ namespace Spark.Engine.Avalonia
                 Engine.Update(dt);
                 Engine.Render(dt);
             }
+            api.ClearColor(Color.AliceBlue);
+            api.Clear(ClearBufferMask.ColorBufferBit);
             RequestNextFrameRendering();
 
 
