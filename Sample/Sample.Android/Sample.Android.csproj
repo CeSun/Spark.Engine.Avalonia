@@ -27,10 +27,12 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<AndroidAsset Include=".\Content\**\*">
-			<Link>Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
+		<AndroidAsset Include="..\..\Spark.Engine\Source\Platform\Resource\**\*">
+			<Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</AndroidAsset>
 	</ItemGroup>
+
+
 
 </Project>

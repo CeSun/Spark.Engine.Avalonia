@@ -17,4 +17,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Sample\Sample.csproj" />
   </ItemGroup>
+	
+	
+	<ItemGroup>
+		<Content Include="..\..\Spark.Engine\Source\Platform\Resource\**\*">
+			<Link>AppBundle/%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 </Project>

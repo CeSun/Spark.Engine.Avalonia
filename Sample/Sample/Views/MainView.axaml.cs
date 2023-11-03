@@ -18,25 +18,7 @@ namespace Sample.Views
         {
             InitializeComponent();
 
-            EngineControl.BeginPlay += level =>
-            {
-                var lightActor = new Actor(level, "");
-                var lightc = new DirectionLightComponent(lightActor);
-                lightc.LightStrength = 1;
-                lightc.RelativeRotation = Quaternion.CreateFromYawPitchRoll(0, -90, 0);
-                lightActor.RootComponent = lightc;
-                lightc.Color = Color.White;
-
-                var SkyBoxActor = new Actor(level, "SkyBox Actor");
-                var skybox = new SkyboxComponent(SkyBoxActor);
-                SkyBoxActor.RootComponent = skybox;
-                TextureCube.LoadAsync("/Skybox/pm").Then(res => {
-                    skybox.SkyboxCube = res;
-                });
-
-                var character = new Character(level);
-
-            };
+            EngineControl.BeginPlay += SparkDemo.SparkDemo.BeginPlay;
         }
 
 

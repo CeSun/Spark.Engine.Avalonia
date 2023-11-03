@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{300A02
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util", "Spark.Engine\Source\Engine\Util\Util.csproj", "{D72CCB63-49EE-47B6-99C4-07CAA7A7DAD7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkDemo", "Spark.Engine\Source\Game\SparkDemo\SparkDemo.csproj", "{3A68475D-6587-4B24-B10B-D5FFF78FE98D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{D72CCB63-49EE-47B6-99C4-07CAA7A7DAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D72CCB63-49EE-47B6-99C4-07CAA7A7DAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D72CCB63-49EE-47B6-99C4-07CAA7A7DAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A68475D-6587-4B24-B10B-D5FFF78FE98D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A68475D-6587-4B24-B10B-D5FFF78FE98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A68475D-6587-4B24-B10B-D5FFF78FE98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A68475D-6587-4B24-B10B-D5FFF78FE98D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{8F8766C3-6927-45E8-835E-2D78E8A4BD57} = {F11C8156-6EBA-410D-ACA9-40EC4419671F}
 		{58F2D355-CCA3-48FA-BBED-2C60C9474833} = {F11C8156-6EBA-410D-ACA9-40EC4419671F}
 		{D72CCB63-49EE-47B6-99C4-07CAA7A7DAD7} = {300A02B3-77D9-45DB-9F62-08264B472A1D}
+		{3A68475D-6587-4B24-B10B-D5FFF78FE98D} = {300A02B3-77D9-45DB-9F62-08264B472A1D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FFC9176-91A1-486B-896A-0E9E621EA22B}

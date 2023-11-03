@@ -22,5 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Spark.Engine.Avalonia\Spark.Engine.Avalonia.csproj" />
+    <ProjectReference Include="..\..\Spark.Engine\Source\Game\SparkDemo\SparkDemo.csproj" />
   </ItemGroup>
 </Project>
