@@ -7,11 +7,11 @@ namespace Spark.Engine.Avalonia
 {
     internal class AvaloniaMouse : IMouse
     {
-        Control control;
+        SparkEngine control;
 
         global::Avalonia.Input.PointerPoint? PointerPoint;
 
-        public AvaloniaMouse(Control control) 
+        public AvaloniaMouse(SparkEngine control) 
         { 
             this.control = control;
 
@@ -19,51 +19,55 @@ namespace Spark.Engine.Avalonia
             {
                 PointerPoint = e.GetCurrentPoint(s as Control);
                 var p = e.GetPosition(this.control);
-                Position = new Vector2((float)p.X, (float)p.Y);
+                Position = new Vector2((float)p.X * control.Scale, (float)p.Y * control.Scale);
                 MouseMove?.Invoke(this, Position);
 
             };
 
             this.control.PointerPressed += (s, e) =>
             {
-                var p = e.GetCurrentPoint(s as Control);
+                var _PointerPoint = e.GetCurrentPoint(s as Control);
+                var p = e.GetPosition(this.control);
+                Position = new Vector2((float)p.X * control.Scale, (float)p.Y * control.Scale);
                 MouseButton mouseButton = MouseButton.Unknown;
-                if (p.Properties.IsLeftButtonPressed)
+                if (_PointerPoint.Properties.IsLeftButtonPressed)
                 {
                     mouseButton = MouseButton.Left;
                 }
 
-                if (p.Properties.IsRightButtonPressed)
+                if (_PointerPoint.Properties.IsRightButtonPressed)
                 {
                     mouseButton = MouseButton.Right;
                 }
-                if (p.Properties.IsMiddleButtonPressed)
+                if (_PointerPoint.Properties.IsMiddleButtonPressed)
                 {
                     mouseButton = MouseButton.Middle;
                 }
-                PointerPoint = p;
+                PointerPoint = _PointerPoint;
                 MouseDown?.Invoke(this, mouseButton);
             };
 
 
             this.control.PointerReleased += (s, e) =>
             {
-                var p = e.GetCurrentPoint(s as Control);
+                var _PointerPoint = e.GetCurrentPoint(s as Control);
+                var p = e.GetPosition(this.control);
+                Position = new Vector2((float)p.X * control.Scale, (float)p.Y * control.Scale);
                 MouseButton mouseButton = MouseButton.Unknown;
-                if (p.Properties.IsLeftButtonPressed)
+                if (_PointerPoint.Properties.IsLeftButtonPressed)
                 {
                     mouseButton = MouseButton.Left;
                 }
 
-                if (p.Properties.IsRightButtonPressed)
+                if (_PointerPoint.Properties.IsRightButtonPressed)
                 {
                     mouseButton = MouseButton.Right;
                 }
-                if (p.Properties.IsMiddleButtonPressed)
+                if (_PointerPoint.Properties.IsMiddleButtonPressed)
                 {
                     mouseButton = MouseButton.Middle;
                 }
-                PointerPoint = p;
+                PointerPoint = _PointerPoint;
                 MouseUp?.Invoke(this, mouseButton);
             };
 

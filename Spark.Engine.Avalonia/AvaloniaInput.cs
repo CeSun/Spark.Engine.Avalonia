@@ -11,7 +11,7 @@ namespace Spark.Engine.Avalonia
     internal class AvaloniaInput : IInputContext
     {
        
-        public AvaloniaInput(Control control)
+        public AvaloniaInput(SparkEngine control)
         {
             _Keyboards.Add(new AvaloniaKeyboard(control));
             _Mice.Add(new AvaloniaMouse(control));

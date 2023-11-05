@@ -9,6 +9,7 @@ using Silk.NET.OpenGLES;
 using Spark.Engine.Platform;
 using System.Diagnostics;
 using System.Drawing;
+using System.Numerics;
 
 namespace Spark.Engine.Avalonia
 {
@@ -22,8 +23,8 @@ namespace Spark.Engine.Avalonia
         public static readonly StyledProperty<RenderQuality> RenderQualityProperty =
         AvaloniaProperty.Register<SparkEngine, RenderQuality>(nameof(RenderQuality), defaultValue: RenderQuality.Low);
 
-        
 
+        public float Scale => (float)VisualRoot.RenderScaling;
         public event Action<Level>? BeginPlay;
         public event Action<Level>? EndPlay;
         public RenderQuality RenderQuality 
