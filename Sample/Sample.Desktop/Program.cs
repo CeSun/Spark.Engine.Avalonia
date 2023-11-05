@@ -13,9 +13,6 @@ namespace Sample.Desktop
         [STAThread]
         public static void Main(string[] args)
         {
-
-
-            FileSystem.Init(new global::Spark.Engine.Avalonia.DesktopFileSystem());
             BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
         }

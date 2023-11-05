@@ -22,9 +22,4 @@
     <ProjectReference Include="..\Sample\Sample.csproj" />
   </ItemGroup>
 
-	<ItemGroup>
-		<Content Include="..\..\Spark.Engine\Source\Platform\Resource\**\*">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
 </Project>

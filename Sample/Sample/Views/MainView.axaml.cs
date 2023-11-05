@@ -1,4 +1,6 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Platform;
 using Spark.Engine;
 using Spark.Engine.Actors;
 using Spark.Engine.Assets;
@@ -17,7 +19,6 @@ namespace Sample.Views
         public MainView()
         {
             InitializeComponent();
-
             EngineControl.BeginPlay += SparkDemo.SparkDemo.BeginPlay;
         }
 

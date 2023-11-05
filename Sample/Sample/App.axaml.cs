@@ -3,7 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Sample.ViewModels;
 using Sample.Views;
-
+using Spark.Engine.Avalonia;
 namespace Sample
 {
     public partial class App : Application
@@ -11,6 +11,7 @@ namespace Sample
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            AvaloniaFileSystem.InitAvaloniaFileSystem("Sample");
         }
 
         public override void OnFrameworkInitializationCompleted()

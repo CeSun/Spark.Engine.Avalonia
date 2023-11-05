@@ -53,7 +53,12 @@ namespace Spark.Engine.Avalonia
             }
         }
 
+        protected override void OnOpenGlInit(GlInterface gl)
+        {
+            base.OnOpenGlInit(gl);
 
+            RequestNextFrameRendering();
+        }
         protected override void OnOpenGlRender(GlInterface gl, int fb)
         {
             var api = GL.GetApi(gl.GetProcAddress);

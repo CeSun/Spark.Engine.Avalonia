@@ -24,4 +24,11 @@
     <ProjectReference Include="..\..\Spark.Engine.Avalonia\Spark.Engine.Avalonia.csproj" />
     <ProjectReference Include="..\..\Spark.Engine\Source\Game\SparkDemo\SparkDemo.csproj" />
   </ItemGroup>
+
+
+	<ItemGroup>
+		<AvaloniaResource Include="..\..\Spark.Engine\Source\Platform\Resource\**\*">
+			<Link>Assets\%(RecursiveDir)%(Filename)%(Extension)</Link>
+		</AvaloniaResource >
+	</ItemGroup>
 </Project>

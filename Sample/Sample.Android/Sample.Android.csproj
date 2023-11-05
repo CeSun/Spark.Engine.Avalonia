@@ -26,13 +26,5 @@
     <ProjectReference Include="..\Sample\Sample.csproj" />
   </ItemGroup>
 
-	<ItemGroup>
-		<AndroidAsset Include="..\..\Spark.Engine\Source\Platform\Resource\**\*">
-			<Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</AndroidAsset>
-	</ItemGroup>
-
-
 
 </Project>
