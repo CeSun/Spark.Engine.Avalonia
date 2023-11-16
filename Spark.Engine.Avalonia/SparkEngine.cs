@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.OpenGL;
@@ -20,18 +21,10 @@ namespace Spark.Engine.Avalonia
     }
     public class SparkEngine : OpenGlControlBase, ICustomHitTest
     {
-        public static readonly StyledProperty<RenderQuality> RenderQualityProperty =
-        AvaloniaProperty.Register<SparkEngine, RenderQuality>(nameof(RenderQuality), defaultValue: RenderQuality.Low);
-
-
         public float Scale => (float)VisualRoot.RenderScaling;
         public event Action<Level>? BeginPlay;
         public event Action<Level>? EndPlay;
-        public RenderQuality RenderQuality 
-        { 
-            get => GetValue(RenderQualityProperty); 
-            set => SetValue(RenderQualityProperty, value); 
-        }
+        public RenderQuality RenderQuality;
 
         private Stopwatch stopwatch = new Stopwatch();
 
@@ -40,8 +33,15 @@ namespace Spark.Engine.Avalonia
         public SparkEngine()
         {
             Focusable = true;
+            if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                RenderQuality = RenderQuality.High;
+            }
+            else
+            {
+                RenderQuality = RenderQuality.Low;
+            }
 
-            
         }
         protected override void OnSizeChanged(SizeChangedEventArgs e)
         {
