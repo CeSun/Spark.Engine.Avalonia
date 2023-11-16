@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
@@ -29,6 +29,6 @@
 	<ItemGroup>
 		<AvaloniaResource Include="..\..\Spark.Engine\Source\Platform\Resource\**\*">
 			<Link>Assets\%(RecursiveDir)%(Filename)%(Extension)</Link>
-		</AvaloniaResource >
+		</AvaloniaResource>
 	</ItemGroup>
 </Project>
