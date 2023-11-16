@@ -11,12 +11,16 @@ namespace Spark.Engine.Avalonia
 
         global::Avalonia.Input.PointerPoint? PointerPoint;
 
+        bool IsPressed = false;
+
         public AvaloniaMouse(SparkEngine control) 
         { 
             this.control = control;
 
             this.control.PointerMoved += (s, e) =>
             {
+                if (IsPressed == false)
+                    return;
                 PointerPoint = e.GetCurrentPoint(s as Control);
                 var p = e.GetPosition(this.control);
                 Position = new Vector2((float)p.X * control.Scale, (float)p.Y * control.Scale);
@@ -26,6 +30,9 @@ namespace Spark.Engine.Avalonia
 
             this.control.PointerPressed += (s, e) =>
             {
+                if (IsPressed == true)
+                    return;
+                IsPressed = true;
                 var _PointerPoint = e.GetCurrentPoint(s as Control);
                 var p = e.GetPosition(this.control);
                 Position = new Vector2((float)p.X * control.Scale, (float)p.Y * control.Scale);
@@ -50,6 +57,9 @@ namespace Spark.Engine.Avalonia
 
             this.control.PointerReleased += (s, e) =>
             {
+                if (IsPressed == false)
+                    return;
+                IsPressed = false;
                 var _PointerPoint = e.GetCurrentPoint(s as Control);
                 var p = e.GetPosition(this.control);
                 Position = new Vector2((float)p.X * control.Scale, (float)p.Y * control.Scale);
